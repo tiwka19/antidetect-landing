@@ -1,0 +1,142 @@
+//====================================================================================================
+.header {
+  padding: toRem(20) 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary);
+  transition: all 0.2s ease 0s;
+  border-bottom: 2px solid transparent;
+  z-index: 50;
+  &._header-scroll {
+    border-bottom: 2px solid var(--inverse);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__button {
+    font-size: toRem(18);
+  }
+  .menu {
+    flex: 1 1 auto;
+	justify-self: flex-start;
+	justify-content: flex-start;
+    position: relative;
+    &__body {
+      @media (max-width: em(1200)) {
+        position: fixed;
+        width: toRem(350);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        top: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        left: -300%;
+        transition: all 0.3s ease 0s;
+        overflow: auto;
+        gap: toRem(30);
+        z-index: 2;
+        padding: toRem(100) toRem(30) toRem(30);
+        &::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: -300%;
+          transition: all 0.3s ease 0s;
+          width: toRem(300);
+          height: toRrem(60);
+
+          z-index: 2;
+        }
+        .menu-open & {
+          left: 0;
+        }
+        .menu-open &::before {
+          left: 0;
+        }
+      }
+    }
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+	  padding-left: toRem(30);
+      flex-wrap: wrap;
+      gap: toRem(15) toRem(30);
+      position: relative;
+
+      @media (max-width: em(1200)) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    &__item {
+      font-size: toRem(18);
+      font-weight: 500;
+	  @media (any-hover: hover){
+		&:hover{
+			color: var(--inverse);
+		}
+	  }
+    }
+  }
+}
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
