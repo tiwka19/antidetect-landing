@@ -1,17 +1,16 @@
-// Базові стилі спойлерів
-// Сніппет (HTML): spoller
-
-// Блок зі спойлерами
+//Базовые стили спойлеров
+//Сниппет (HTML): spoller
+//Блок со спойлерами
 .spollers {
 	display: grid;
 }
-// Спойлер
+//Спойлер
 .spollers__item {
 	font-size: toRem(20);
 	padding: toRem(30) 0;
 	border-bottom: 1px solid #61677A;
 }
-// Заголовок спойлера
+//Заголовок спойлера
 .spollers__title {
 	width: 100%;
 	cursor: default;
@@ -62,7 +61,7 @@
 		}
 	}
 }
-// Контент спойлера
+//Контент спойлера
 .spollers__body {
 	padding-top: toRem(20);
 	font-size: toRem(20);
